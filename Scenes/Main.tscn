@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=4 uid="uid://cthqcuuesayqa"]
+
+[ext_resource type="PackedScene" uid="uid://byrh4hbjoboyo" path="res://Prefabs/Player.tscn" id="1_rrpx6"]
+[ext_resource type="Texture2D" uid="uid://dcjlk6ylj5om7" path="res://Art/Terrain.png" id="2_4x01o"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1hrvm"]
+resource_name = "Ground"
+texture = ExtResource("2_4x01o")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(2.625, 2.5, 16, -10.125, 16, 16, -11.125, 16)
+
+[sub_resource type="TileSet" id="TileSet_feg6w"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_1hrvm")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_rrpx6")]
+position = Vector2(318, -60)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(-1, -1)
+tile_map_data = PackedByteArray("AAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAD+/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAD8/wEAAAAAAAAAAAD7/wEAAAAAAAAAAAAPAAAAAAABAAAAAAAPAAEAAAAAAAAAAAAQAAEAAAAAAAAAAAARAAEAAAAAAAAAAAASAAEAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_feg6w")
