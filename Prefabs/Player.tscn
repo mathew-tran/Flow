@@ -1,21 +1,59 @@
-[gd_scene load_steps=4 format=3 uid="uid://byrh4hbjoboyo"]
+[gd_scene load_steps=10 format=3 uid="uid://byrh4hbjoboyo"]
 
 [ext_resource type="Texture2D" uid="uid://6r6bt0v34fs2" path="res://Art/Car.png" id="1_lpgtf"]
+[ext_resource type="Script" path="res://Scripts/CarEngine.gd" id="2_jxlel"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="2_u7q0n"]
+[ext_resource type="Texture2D" uid="uid://b37qsgnnj5b7c" path="res://Art/CarLight.png" id="3_jliyo"]
+[ext_resource type="Texture2D" uid="uid://pb23a1kvfh1" path="res://Art/Player.png" id="4_y5hxa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n6yn4"]
 radius = 5.0
 height = 58.0
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0i6ql"]
+radius = 4.0
+height = 22.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sm7sw"]
+bg_color = Color(0.0708272, 0.0708272, 0.0708272, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gi63k"]
+bg_color = Color(0.436732, 0.682237, 0.154491, 1)
+
+[node name="Player" type="RigidBody2D"]
 collision_mask = 2
 mass = 0.3
 gravity_scale = 0.5
 angular_damp = 3.009
 script = ExtResource("2_u7q0n")
 
-[node name="Player" type="Sprite2D" parent="."]
+[node name="Engine" type="Node" parent="."]
+script = ExtResource("2_jxlel")
+
+[node name="CarLight" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-25, 2)
+scale = Vector2(1, 0.59375)
+texture = ExtResource("3_jliyo")
+
+[node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_lpgtf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-9, -2)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_y5hxa")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-28, 5)
+amount = 50
+lifetime = 0.5
+speed_scale = 5.0
+emission_shape = 1
+emission_sphere_radius = 2.1
+gravity = Vector2(0, -20)
+scale_amount_min = 2.0
+scale_amount_max = 4.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 7)
@@ -23,6 +61,7 @@ rotation = -1.5708
 shape = SubResource("CapsuleShape2D_n6yn4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
 
 [node name="RaySteer" type="RayCast2D" parent="."]
 position = Vector2(-9, 7)
@@ -44,3 +83,21 @@ position = Vector2(-22, 10)
 
 [node name="FrontWheel" type="Node2D" parent="."]
 position = Vector2(29, 10)
+
+[node name="StaticBody2D" type="RigidBody2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-7, -1)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_0i6ql")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -24.0
+offset_top = 8.0
+offset_right = 26.0
+offset_bottom = 10.0
+theme_override_styles/background = SubResource("StyleBoxFlat_sm7sw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gi63k")
+max_value = 1.0
+show_percentage = false
