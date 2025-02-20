@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=2 format=3 uid="uid://c7rpit6wdbvbd"]
+
+[ext_resource type="Script" path="res://Resources/Dialogue.gd" id="1_kt3ei"]
+
+[resource]
+script = ExtResource("1_kt3ei")
+Text = Array[String](["Hey.", "Are you a taxi?", "Cool."])

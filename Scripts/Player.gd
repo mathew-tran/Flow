@@ -1,12 +1,34 @@
 extends RigidBody2D
 
+class_name Player
 var Speed = 10000
 
+var CharacterReference : Character
+
+var bCanMove = true
+
 func _process(delta):
-	print($Engine.ToString())
 	$ProgressBar.value = $Engine.GetPercent()
+	if is_instance_valid(CharacterReference) and CharacterReference.HasInteracted() == false:		
+		$InteractControl.visible = true
+		if Input.is_action_just_pressed("interact"):
+			bCanMove = false
+			await CharacterReference.Interact()
+			CharacterReference.Pickup(self)
+			bCanMove = true
+	else:
+		$InteractControl.visible = false
+	
+func AssignCustomerImage(charRefImage):
+	$Customer.texture = charRefImage
+	$Customer.visible = true
+	
+func HideCustomer():
+	$Customer.visible = false
 	
 func _physics_process(delta):
+	if bCanMove == false:
+		return
 	
 	var newVelocity = Vector2.ZERO
 	if Input.is_action_pressed("forward"):
@@ -54,9 +76,20 @@ func _physics_process(delta):
 	apply_force(newVelocity, $BackWheel.position)
 	apply_force(newVelocity, $FrontWheel.position)
 	
+		
 	
 	if $FrontRay.is_colliding() == false and $BackRay.is_colliding() == false and $Engine.CanUse(CarEngine.USAGE_TYPE.AIR):		
 		look_at(get_global_mouse_position())
 
 func IsGrounded():
 	return $FrontRay.is_colliding() or $BackRay.is_colliding()
+
+
+func _on_character_finder_area_entered(area):
+	if area is Character:
+		print(area)
+		CharacterReference = area
+
+
+func _on_character_finder_area_exited(area):
+	CharacterReference = null

@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://byrh4hbjoboyo"]
+[gd_scene load_steps=12 format=3 uid="uid://byrh4hbjoboyo"]
 
 [ext_resource type="Texture2D" uid="uid://6r6bt0v34fs2" path="res://Art/Car.png" id="1_lpgtf"]
 [ext_resource type="Script" path="res://Scripts/CarEngine.gd" id="2_jxlel"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="2_u7q0n"]
 [ext_resource type="Texture2D" uid="uid://b37qsgnnj5b7c" path="res://Art/CarLight.png" id="3_jliyo"]
 [ext_resource type="Texture2D" uid="uid://pb23a1kvfh1" path="res://Art/Player.png" id="4_y5hxa"]
+[ext_resource type="Texture2D" uid="uid://b3f4t888hx3l1" path="res://Art/Characters/Adam/AdamHead.png" id="6_2idg8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n6yn4"]
 radius = 5.0
@@ -20,10 +21,15 @@ bg_color = Color(0.0708272, 0.0708272, 0.0708272, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gi63k"]
 bg_color = Color(0.436732, 0.682237, 0.154491, 1)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1u64w"]
+radius = 41.0122
+
 [node name="Player" type="RigidBody2D"]
-collision_mask = 2
+collision_mask = 6
 mass = 0.3
 gravity_scale = 0.5
+contact_monitor = true
+max_contacts_reported = 2
 angular_damp = 3.009
 script = ExtResource("2_u7q0n")
 
@@ -40,7 +46,7 @@ texture = ExtResource("3_jliyo")
 texture = ExtResource("1_lpgtf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-9, -2)
+position = Vector2(-7, -2)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_y5hxa")
 
@@ -101,3 +107,35 @@ theme_override_styles/background = SubResource("StyleBoxFlat_sm7sw")
 theme_override_styles/fill = SubResource("StyleBoxFlat_gi63k")
 max_value = 1.0
 show_percentage = false
+
+[node name="CharacterFinder" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterFinder"]
+shape = SubResource("CircleShape2D_1u64w")
+
+[node name="InteractControl" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -56.0
+offset_top = -34.0
+offset_right = -16.0
+offset_bottom = 6.0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="InteractControl"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "\"E\" to interact"
+
+[node name="Customer" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-14, -1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_2idg8")
+
+[connection signal="area_entered" from="CharacterFinder" to="." method="_on_character_finder_area_entered"]
+[connection signal="area_exited" from="CharacterFinder" to="." method="_on_character_finder_area_exited"]

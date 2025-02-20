@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="TravelItinerary" load_steps=7 format=3 uid="uid://dssg6q83uetyo"]
+
+[ext_resource type="Script" path="res://Resources/TravelDestination.gd" id="1_goybm"]
+[ext_resource type="Script" path="res://Resources/Dialogue.gd" id="2_hu7dg"]
+[ext_resource type="Resource" uid="uid://8s8dp8byrn41" path="res://Resources/Destinations/Destination_Bar.tres" id="2_riyd7"]
+[ext_resource type="Script" path="res://Resources/TravelItinerary.gd" id="2_xqmu0"]
+
+[sub_resource type="Resource" id="Resource_n4484"]
+script = ExtResource("2_hu7dg")
+Text = Array[String](["Can you drop me off at the bar?", "I am meeting someone there."])
+
+[sub_resource type="Resource" id="Resource_a2wld"]
+script = ExtResource("1_goybm")
+Dialogues = SubResource("Resource_n4484")
+Dest = ExtResource("2_riyd7")
+
+[resource]
+script = ExtResource("2_xqmu0")
+Destinations = Array[ExtResource("1_goybm")]([SubResource("Resource_a2wld")])
