@@ -44,4 +44,5 @@ theme_override_font_sizes/font_size = 16
 text = "asdasdasd"
 horizontal_alignment = 1
 vertical_alignment = 1
-visible_ratio = -0.111111
+visible_characters = 0
+visible_ratio = 0.0
