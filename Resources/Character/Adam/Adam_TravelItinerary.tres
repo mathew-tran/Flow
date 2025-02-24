@@ -1,9 +1,35 @@
-[gd_resource type="Resource" script_class="TravelItinerary" load_steps=7 format=3 uid="uid://dssg6q83uetyo"]
+[gd_resource type="Resource" script_class="TravelItinerary" load_steps=13 format=3 uid="uid://dssg6q83uetyo"]
 
 [ext_resource type="Script" path="res://Resources/TravelDestination.gd" id="1_goybm"]
 [ext_resource type="Script" path="res://Resources/Dialogue.gd" id="2_hu7dg"]
 [ext_resource type="Resource" uid="uid://8s8dp8byrn41" path="res://Resources/Destinations/Destination_Bar.tres" id="2_riyd7"]
 [ext_resource type="Script" path="res://Resources/TravelItinerary.gd" id="2_xqmu0"]
+[ext_resource type="Resource" uid="uid://fr884kxhh5hf" path="res://Resources/Destinations/Destination_Toilet1.tres" id="4_pxmx6"]
+
+[sub_resource type="Resource" id="Resource_bynst"]
+script = ExtResource("2_hu7dg")
+Text = Array[String](["I need to go to the washroom first.", "Can you bring me to one nearby?"])
+
+[sub_resource type="Resource" id="Resource_huvk4"]
+script = ExtResource("2_hu7dg")
+Text = Array[String](["Thanks alot. Was holding it in."])
+
+[sub_resource type="Resource" id="Resource_f5v6t"]
+script = ExtResource("2_hu7dg")
+Text = Array[String](["I'll be back in a sec!"])
+
+[sub_resource type="Resource" id="Resource_8haia"]
+script = ExtResource("2_hu7dg")
+Text = Array[String](["....", "It's gross in here."])
+
+[sub_resource type="Resource" id="Resource_wsmna"]
+script = ExtResource("1_goybm")
+Dialogues = SubResource("Resource_bynst")
+Dest = ExtResource("4_pxmx6")
+WaitTime = 5.0
+PrewaitDialogue = SubResource("Resource_f5v6t")
+WaitDialogue = SubResource("Resource_8haia")
+PostWaitDialogue = SubResource("Resource_huvk4")
 
 [sub_resource type="Resource" id="Resource_n4484"]
 script = ExtResource("2_hu7dg")
@@ -13,7 +39,8 @@ Text = Array[String](["Can you drop me off at Moes bar?", "I am meeting someone 
 script = ExtResource("1_goybm")
 Dialogues = SubResource("Resource_n4484")
 Dest = ExtResource("2_riyd7")
+WaitTime = 1.0
 
 [resource]
 script = ExtResource("2_xqmu0")
-Destinations = Array[ExtResource("1_goybm")]([SubResource("Resource_a2wld")])
+Destinations = Array[ExtResource("1_goybm")]([SubResource("Resource_wsmna"), SubResource("Resource_a2wld")])

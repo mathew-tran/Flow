@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Destination" load_steps=2 format=3 uid="uid://ih1tb36xx0gn"]
+
+[ext_resource type="Script" path="res://Resources/Destination.gd" id="1_t73o7"]
+
+[resource]
+script = ExtResource("1_t73o7")
+Name = "Toilet"
+InnerName = 3

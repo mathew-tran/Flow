@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://jcc08m0hb36e"]
+
+[ext_resource type="Texture2D" uid="uid://g5ioflq4y1cy" path="res://Art/Buildings/Toilet/Toilet.png" id="1_g6cbt"]
+[ext_resource type="Script" path="res://Scripts/Building.gd" id="2_mfa8f"]
+
+[node name="Toilet7" type="Sprite2D"]
+position = Vector2(0, -32)
+texture = ExtResource("1_g6cbt")
+script = ExtResource("2_mfa8f")
+BuildingID = 7
+
+[node name="CharacterPoint" type="Node2D" parent="."]
+position = Vector2(-36, 32)
