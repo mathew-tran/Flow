@@ -1,31 +1,37 @@
-[gd_scene load_steps=7 format=3 uid="uid://dr38h8ysriyxr"]
+[gd_scene load_steps=9 format=3 uid="uid://dr38h8ysriyxr"]
 
 [ext_resource type="Script" path="res://Scripts/Character.gd" id="1_772lq"]
 [ext_resource type="Texture2D" uid="uid://b3f4t888hx3l1" path="res://Art/Characters/Adam/AdamHead.png" id="1_unn3q"]
 [ext_resource type="Resource" uid="uid://c7rpit6wdbvbd" path="res://Resources/Character/Adam/Adam_Greet.tres" id="2_4ia3e"]
 [ext_resource type="Texture2D" uid="uid://xsntr2ygp8du" path="res://Art/Characters/Adam/AdamBody.png" id="2_ejkyl"]
 [ext_resource type="Resource" uid="uid://dssg6q83uetyo" path="res://Resources/Character/Adam/Adam_TravelItinerary.tres" id="3_pbks6"]
+[ext_resource type="Script" path="res://Resources/Dialogue.gd" id="4_12q5w"]
+
+[sub_resource type="Resource" id="Resource_id7d6"]
+script = ExtResource("4_12q5w")
+Text = Array[String](["Thanks for dropping me off.", "See you around maybe?"])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6mjcy"]
 size = Vector2(22, 34)
 
 [node name="Character" type="Area2D"]
-position = Vector2(3, 9)
 collision_layer = 5
 script = ExtResource("1_772lq")
 GreetDialogue = ExtResource("2_4ia3e")
 Travel = ExtResource("3_pbks6")
+EndDialogue = SubResource("Resource_id7d6")
 metadata/_edit_group_ = true
 
 [node name="Head" type="Sprite2D" parent="."]
+position = Vector2(0, -21.5)
 texture = ExtResource("1_unn3q")
 
 [node name="Body" type="Sprite2D" parent="."]
-position = Vector2(0, 16)
+position = Vector2(0, -5.5)
 texture = ExtResource("2_ejkyl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 7)
+position = Vector2(1, -14.5)
 shape = SubResource("RectangleShape2D_6mjcy")
 
 [node name="Label" type="Label" parent="."]
@@ -35,9 +41,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -100.0
-offset_top = -34.5
+offset_top = -67.0
 offset_right = 100.0
-offset_bottom = -11.5
+offset_bottom = -44.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 16

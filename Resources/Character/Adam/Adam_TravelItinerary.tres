@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_n4484"]
 script = ExtResource("2_hu7dg")
-Text = Array[String](["Can you drop me off at the bar?", "I am meeting someone there."])
+Text = Array[String](["Can you drop me off at Moes bar?", "I am meeting someone there."])
 
 [sub_resource type="Resource" id="Resource_a2wld"]
 script = ExtResource("1_goybm")

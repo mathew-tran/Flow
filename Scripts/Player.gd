@@ -10,14 +10,17 @@ var bCanMove = true
 func _process(delta):
 	$ProgressBar.value = $Engine.GetPercent()
 	if is_instance_valid(CharacterReference) and CharacterReference.HasInteracted() == false:		
-		$InteractControl.visible = true
+		Finder.GetInteractText().visible = true
 		if Input.is_action_just_pressed("interact"):
-			bCanMove = false
+			SetCanMove(false)
 			await CharacterReference.Interact()
 			CharacterReference.Pickup(self)
-			bCanMove = true
+			SetCanMove(true)
 	else:
-		$InteractControl.visible = false
+		Finder.GetInteractText().visible = false
+	
+func SetCanMove(bMove):
+	bCanMove = bMove
 	
 func AssignCustomerImage(charRefImage):
 	$Customer.texture = charRefImage

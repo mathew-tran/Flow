@@ -6,7 +6,7 @@ func _enter_tree():
 	text = ""
 	
 func SetDestination(destRef : Destination):
-	text = "Go to the " + destRef.Name
+	text = "Go to " + destRef.Name
 	
 func SetText(newText):
 	text = newText

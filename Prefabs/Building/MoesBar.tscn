@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8l0y00dy5fom"]
+
+[ext_resource type="Texture2D" uid="uid://b45bujo4lt0vr" path="res://Art/Buildings/Bar/MoesBar.png" id="1_fcuvg"]
+[ext_resource type="Script" path="res://Scripts/Building.gd" id="2_nf062"]
+
+[node name="MoesBar" type="Sprite2D"]
+position = Vector2(0, -32)
+texture = ExtResource("1_fcuvg")
+script = ExtResource("2_nf062")
+
+[node name="CharacterPoint" type="Node2D" parent="."]
+position = Vector2(-36, 32)

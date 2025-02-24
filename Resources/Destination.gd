@@ -6,5 +6,5 @@ class_name Destination
 @export var InnerName : PLACE
 
 enum PLACE { 
-	BAR
+	MOES_BAR
 }

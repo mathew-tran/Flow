@@ -56,4 +56,4 @@ interact={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=3
-environment/defaults/default_clear_color=Color(0, 0.063594, 0.176085, 1)
+environment/defaults/default_clear_color=Color(0.00554062, 0, 0.120914, 1)

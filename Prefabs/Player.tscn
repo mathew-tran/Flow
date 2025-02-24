@@ -24,7 +24,7 @@ bg_color = Color(0.436732, 0.682237, 0.154491, 1)
 [sub_resource type="CircleShape2D" id="CircleShape2D_1u64w"]
 radius = 41.0122
 
-[node name="Player" type="RigidBody2D"]
+[node name="Player" type="RigidBody2D" groups=["Player"]]
 collision_mask = 6
 mass = 0.3
 gravity_scale = 0.5
@@ -115,22 +115,6 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterFinder"]
 shape = SubResource("CircleShape2D_1u64w")
-
-[node name="InteractControl" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_left = -56.0
-offset_top = -34.0
-offset_right = -16.0
-offset_bottom = 6.0
-metadata/_edit_group_ = true
-
-[node name="Label" type="Label" parent="InteractControl"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "\"E\" to interact"
 
 [node name="Customer" type="Sprite2D" parent="."]
 visible = false
