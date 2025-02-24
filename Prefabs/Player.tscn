@@ -122,5 +122,10 @@ position = Vector2(-14, -1)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("6_2idg8")
 
+[node name="PositionChecker" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
 [connection signal="area_entered" from="CharacterFinder" to="." method="_on_character_finder_area_entered"]
 [connection signal="area_exited" from="CharacterFinder" to="." method="_on_character_finder_area_exited"]
+[connection signal="timeout" from="PositionChecker" to="." method="_on_position_checker_timeout"]

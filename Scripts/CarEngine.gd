@@ -4,7 +4,7 @@ class_name CarEngine
 
 var Fuel = 0
 var MaxFuel = 100
-var RechargeRate = 10
+var RechargeRate = 18
 
 enum USAGE_TYPE {
 	GROUND,
@@ -40,5 +40,7 @@ func Recharge(delta):
 	if Fuel >= MaxFuel:
 		Fuel = MaxFuel
 
+func IsEmpty():
+	return Fuel <= 0
 func GetPercent():
 	return float(Fuel) / float(MaxFuel)

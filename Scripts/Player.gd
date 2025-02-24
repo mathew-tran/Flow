@@ -6,8 +6,13 @@ var Speed = 10000
 var CharacterReference : Character
 
 var bCanMove = true
+var LastCachedPosition = Vector2.ZERO
 
 func _process(delta):
+	if linear_velocity.length() <= 3 and IsGrounded() == false and $Engine.IsEmpty():
+		global_position = LastCachedPosition
+		rotation = 0
+		
 	$ProgressBar.value = $Engine.GetPercent()
 	if is_instance_valid(CharacterReference) and CharacterReference.HasInteracted() == false:		
 		Finder.GetInteractText().visible = true
@@ -28,7 +33,9 @@ func AssignCustomerImage(charRefImage):
 	
 func HideCustomer():
 	$Customer.visible = false
+
 	
+		
 func _physics_process(delta):
 	if bCanMove == false:
 		return
@@ -96,3 +103,9 @@ func _on_character_finder_area_entered(area):
 
 func _on_character_finder_area_exited(area):
 	CharacterReference = null
+
+
+func _on_position_checker_timeout():
+	if IsGrounded():
+		LastCachedPosition = global_position
+	pass # Replace with function body.
