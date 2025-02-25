@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://byrh4hbjoboyo"]
+[gd_scene load_steps=13 format=3 uid="uid://byrh4hbjoboyo"]
 
 [ext_resource type="Texture2D" uid="uid://6r6bt0v34fs2" path="res://Art/Car.png" id="1_lpgtf"]
 [ext_resource type="Script" path="res://Scripts/CarEngine.gd" id="2_jxlel"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b37qsgnnj5b7c" path="res://Art/CarLight.png" id="3_jliyo"]
 [ext_resource type="Texture2D" uid="uid://pb23a1kvfh1" path="res://Art/Player.png" id="4_y5hxa"]
 [ext_resource type="Texture2D" uid="uid://b3f4t888hx3l1" path="res://Art/Characters/Adam/AdamHead.png" id="6_2idg8"]
+[ext_resource type="AudioStream" uid="uid://y2tuhkjifm6u" path="res://Music/AdamsSong.wav" id="7_v52uw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n6yn4"]
 radius = 5.0
@@ -125,6 +126,10 @@ texture = ExtResource("6_2idg8")
 [node name="PositionChecker" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_v52uw")
+autoplay = true
 
 [connection signal="area_entered" from="CharacterFinder" to="." method="_on_character_finder_area_entered"]
 [connection signal="area_exited" from="CharacterFinder" to="." method="_on_character_finder_area_exited"]
