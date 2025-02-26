@@ -20,6 +20,7 @@ func _process(delta):
 	$Sprite.visible = bCloseToPosition == false
 	
 	Finder.GetInteractText().visible = bCloseToPosition
+	
 		
 
 func _input(event):
@@ -27,3 +28,5 @@ func _input(event):
 		if event.is_action_pressed("interact"):
 			DoEvent.emit()
 	
+func _exit_tree():
+	Finder.GetInteractText().visible = false

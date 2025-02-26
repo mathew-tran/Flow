@@ -6,25 +6,23 @@ class_name Character
 @export var Travel : TravelItinerary
 @export var EndDialogue : Dialogue
 
-var bInteracted = false
-
 signal CompleteSentence
 
 func _ready():
 	$Label.text = ""
 	var characterRadar = load("res://Prefabs/Radar.tscn").instantiate() as Radar
-	characterRadar.SetTarget(self)
 	Finder.GetUI().add_child(characterRadar)
+	characterRadar.SetTarget(self)
+	
 	await characterRadar.DoEvent
-	characterRadar.queue_free()
-	
-	
-
+	characterRadar.queue_free()	
+	var player = Finder.GetPlayer()
+	player.SetCanMove(false)
+	await Interact()
+	Pickup(player)
+	player.SetCanMove(true)
 
 func Interact():
-	if bInteracted:
-		return
-	bInteracted = true
 	await GreetDialogue.DoDialogue(self)
 	
 func Pickup(playerRef : Player):
@@ -83,6 +81,7 @@ func GetInCar(playerRef):
 	ShowBody(false)
 	reparent(playerRef)
 	playerRef.AssignCustomerImage($Head.texture)
+	position = Vector2.ZERO
 	rotation = 0
 	
 func GetOutOfCar(playerRef, targetPosition):
@@ -97,10 +96,6 @@ func ShowBody(bShow):
 	$Head.visible = bShow
 	$Body.visible = bShow
 	
-
-func HasInteracted():
-	return bInteracted
-
 func Say(words):
 	$Label.visible = false
 	$Label.visible_characters = 0

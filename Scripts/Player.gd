@@ -14,15 +14,6 @@ func _process(delta):
 		rotation = 0
 		
 	$ProgressBar.value = $Engine.GetPercent()
-	if is_instance_valid(CharacterReference) and CharacterReference.HasInteracted() == false:		
-		Finder.GetInteractText().visible = true
-		if Input.is_action_just_pressed("interact"):
-			SetCanMove(false)
-			await CharacterReference.Interact()
-			CharacterReference.Pickup(self)
-			SetCanMove(true)
-	else:
-		Finder.GetInteractText().visible = false
 	
 func SetCanMove(bMove):
 	bCanMove = bMove
