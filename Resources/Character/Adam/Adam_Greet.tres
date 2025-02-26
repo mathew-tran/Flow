@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1_kt3ei")
 Text = Array[String](["Hey.", "Are you a taxi?", "Cool."])
+VisiblityType = 1

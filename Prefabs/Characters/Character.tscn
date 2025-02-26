@@ -1,15 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dr38h8ysriyxr"]
+[gd_scene load_steps=8 format=3 uid="uid://dr38h8ysriyxr"]
 
 [ext_resource type="Script" path="res://Scripts/Character.gd" id="1_772lq"]
 [ext_resource type="Texture2D" uid="uid://b3f4t888hx3l1" path="res://Art/Characters/Adam/AdamHead.png" id="1_unn3q"]
 [ext_resource type="Resource" uid="uid://c7rpit6wdbvbd" path="res://Resources/Character/Adam/Adam_Greet.tres" id="2_4ia3e"]
 [ext_resource type="Texture2D" uid="uid://xsntr2ygp8du" path="res://Art/Characters/Adam/AdamBody.png" id="2_ejkyl"]
 [ext_resource type="Resource" uid="uid://dssg6q83uetyo" path="res://Resources/Character/Adam/Adam_TravelItinerary.tres" id="3_pbks6"]
-[ext_resource type="Script" path="res://Resources/Dialogue.gd" id="4_12q5w"]
-
-[sub_resource type="Resource" id="Resource_id7d6"]
-script = ExtResource("4_12q5w")
-Text = Array[String](["Thanks for dropping me off.", "See you around maybe?"])
+[ext_resource type="Resource" uid="uid://bisbr1wk21044" path="res://Resources/Character/Adam/Adam_EndDialogue.tres" id="4_12bds"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6mjcy"]
 size = Vector2(22, 34)
@@ -19,8 +15,7 @@ collision_layer = 5
 script = ExtResource("1_772lq")
 GreetDialogue = ExtResource("2_4ia3e")
 Travel = ExtResource("3_pbks6")
-EndDialogue = SubResource("Resource_id7d6")
-metadata/_edit_group_ = true
+EndDialogue = ExtResource("4_12bds")
 
 [node name="Head" type="Sprite2D" parent="."]
 position = Vector2(0, -21.5)

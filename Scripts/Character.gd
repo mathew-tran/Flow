@@ -5,15 +5,33 @@ class_name Character
 @export var GreetDialogue : Dialogue
 @export var Travel : TravelItinerary
 @export var EndDialogue : Dialogue
+var TargetPosition = Vector2.ZERO
+
+enum VISIBILITY_TYPE {
+	IN_CAR,
+	OUTSIDE,
+	HIDDEN
+}
 
 signal CompleteSentence
 
+func SetVisibility(visType = VISIBILITY_TYPE.IN_CAR):
+	match visType:
+		VISIBILITY_TYPE.IN_CAR:
+			GetInCar(Finder.GetPlayer())
+		VISIBILITY_TYPE.OUTSIDE:
+			GetOutOfCar(Finder.GetPlayer(), TargetPosition)
+		VISIBILITY_TYPE.HIDDEN:
+			GetOutOfCar(Finder.GetPlayer(), TargetPosition)
+			ShowBody(false)
+			
 func _ready():
 	$Label.text = ""
 	var characterRadar = load("res://Prefabs/Radar.tscn").instantiate() as Radar
 	Finder.GetUI().add_child(characterRadar)
 	characterRadar.SetTarget(self)
 	
+	TargetPosition = global_position
 	await characterRadar.DoEvent
 	characterRadar.queue_free()	
 	var player = Finder.GetPlayer()
@@ -27,53 +45,51 @@ func Interact():
 	
 func Pickup(playerRef : Player):
 	var radar = null
-	GetInCar(playerRef)
+	SetVisibility(VISIBILITY_TYPE.IN_CAR)	
 	
-	var targetPosition = Vector2.ZERO
 	for travel in Travel.Destinations:
 		await travel.Dialogues.DoDialogue(self)
 		Finder.GetMissionText().SetDestination(travel.Dest)
 		radar = load("res://Prefabs/Radar.tscn").instantiate() as Radar
 		radar.SetTarget(Finder.GetBuilding(travel.Dest.InnerName))
 		Finder.GetUI().add_child(radar)
-		targetPosition = Finder.GetBuilding(travel.Dest.InnerName).GetCharacterPosition()
+		TargetPosition = Finder.GetBuilding(travel.Dest.InnerName).GetCharacterPosition()
 		Say("")
 		await radar.DoEvent
 		Finder.GetMissionText().SetText("Wait for Customer")
 		radar.queue_free()
 		playerRef.SetCanMove(false)
-		GetOutOfCar(playerRef, targetPosition)
 		
 		if is_instance_valid(travel.PrewaitDialogue):			
 			await travel.PrewaitDialogue.DoDialogue(self)		
 			Say("")
+			
 		await get_tree().create_timer(1.0).timeout
-		ShowBody(false)
 		if is_instance_valid(travel.WaitDialogue):
 			await travel.WaitDialogue.DoDialogue(self)
 			Say("")
-		
 
 		await get_tree().create_timer(travel.WaitTime).timeout
 		
-		ShowBody(true)
 		
 		if is_instance_valid(travel.PostWaitDialogue):
 			await travel.PostWaitDialogue.DoDialogue(self)
 			Say("")
 			
+			
 		Finder.GetMissionText().SetText("")
 		
 
 		await get_tree().create_timer(1.0).timeout
-		GetInCar(playerRef)
 		playerRef.SetCanMove(true)
+		SetVisibility(VISIBILITY_TYPE.IN_CAR)
 		
 		
 	Finder.GetMissionText().SetText("")
-	GetOutOfCar(playerRef, targetPosition)
+	
 	playerRef.SetCanMove(false)
 	await EndDialogue.DoDialogue(self)
+	SetVisibility(VISIBILITY_TYPE.HIDDEN)
 	playerRef.SetCanMove(true)
 	queue_free()
 		

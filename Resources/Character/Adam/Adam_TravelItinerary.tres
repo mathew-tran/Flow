@@ -9,18 +9,22 @@
 [sub_resource type="Resource" id="Resource_bynst"]
 script = ExtResource("2_hu7dg")
 Text = Array[String](["I need to go to the washroom first.", "Can you bring me to one nearby?"])
+VisiblityType = 0
 
 [sub_resource type="Resource" id="Resource_huvk4"]
 script = ExtResource("2_hu7dg")
 Text = Array[String](["Thanks alot. Was holding it in."])
+VisiblityType = 1
 
 [sub_resource type="Resource" id="Resource_f5v6t"]
 script = ExtResource("2_hu7dg")
 Text = Array[String](["I'll be back in a sec!"])
+VisiblityType = 1
 
 [sub_resource type="Resource" id="Resource_8haia"]
 script = ExtResource("2_hu7dg")
 Text = Array[String](["....", "It's gross in here."])
+VisiblityType = 2
 
 [sub_resource type="Resource" id="Resource_wsmna"]
 script = ExtResource("1_goybm")
@@ -34,6 +38,7 @@ PostWaitDialogue = SubResource("Resource_huvk4")
 [sub_resource type="Resource" id="Resource_n4484"]
 script = ExtResource("2_hu7dg")
 Text = Array[String](["Can you drop me off at Moes bar?", "I am meeting someone there."])
+VisiblityType = 0
 
 [sub_resource type="Resource" id="Resource_a2wld"]
 script = ExtResource("1_goybm")
