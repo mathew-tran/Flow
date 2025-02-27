@@ -14,6 +14,7 @@ func _process(delta):
 		rotation = 0
 		
 	$ProgressBar.value = $Engine.GetPercent()
+	Finder.GetInteractText().visible = false
 	
 func SetCanMove(bMove):
 	bCanMove = bMove
@@ -100,3 +101,6 @@ func _on_position_checker_timeout():
 	if IsGrounded():
 		LastCachedPosition = global_position
 	pass # Replace with function body.
+
+func Stop():
+	linear_velocity = Vector2.ZERO

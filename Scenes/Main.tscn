@@ -1,10 +1,9 @@
-[gd_scene load_steps=17 format=4 uid="uid://cthqcuuesayqa"]
+[gd_scene load_steps=20 format=4 uid="uid://cthqcuuesayqa"]
 
 [ext_resource type="PackedScene" uid="uid://byrh4hbjoboyo" path="res://Prefabs/Player.tscn" id="1_rrpx6"]
 [ext_resource type="Texture2D" uid="uid://dcjlk6ylj5om7" path="res://Art/Terrain.png" id="2_4x01o"]
 [ext_resource type="Texture2D" uid="uid://ikly2f3egsl5" path="res://Art/Decorations.png" id="3_d6cr5"]
 [ext_resource type="PackedScene" uid="uid://b8l0y00dy5fom" path="res://Prefabs/Building/MoesBar.tscn" id="3_lbn0m"]
-[ext_resource type="PackedScene" uid="uid://dr38h8ysriyxr" path="res://Prefabs/Characters/Character.tscn" id="4_hdihm"]
 [ext_resource type="Script" path="res://Scripts/MissionText.gd" id="5_ol2b4"]
 [ext_resource type="PackedScene" uid="uid://g5eammev0c7d" path="res://Prefabs/Building/Toilet1.tscn" id="7_46vyh"]
 [ext_resource type="PackedScene" uid="uid://b6pbqw7qg7uvk" path="res://Prefabs/Building/Toilet2.tscn" id="8_l7bnq"]
@@ -12,7 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://deem3n8o0s4sp" path="res://Prefabs/Building/Toilet4.tscn" id="10_5mkei"]
 [ext_resource type="PackedScene" uid="uid://crkkx6m0ksgc7" path="res://Prefabs/Building/Toilet5.tscn" id="11_2h3r5"]
 [ext_resource type="PackedScene" uid="uid://b8a3ktidp5puc" path="res://Prefabs/Building/Toilet6.tscn" id="12_seq86"]
+[ext_resource type="PackedScene" uid="uid://lu5rbaobhkra" path="res://Prefabs/Building/Cactus1.tscn" id="13_4rkk1"]
 [ext_resource type="PackedScene" uid="uid://jcc08m0hb36e" path="res://Prefabs/Building/Toilet7.tscn" id="13_i4ogt"]
+[ext_resource type="Script" path="res://Scripts/CharacterSpawner.gd" id="14_bpl12"]
+[ext_resource type="Script" path="res://Resources/CharacterList.gd" id="15_gmpqr"]
+[ext_resource type="Resource" uid="uid://bm3xmfgu4fm1e" path="res://Resources/CharacterLists/Chapter1.tres" id="16_ep2o1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1hrvm"]
 resource_name = "Ground"
@@ -71,11 +74,11 @@ position = Vector2(14034, 543)
 [node name="Toilet7" parent="Environment" instance=ExtResource("13_i4ogt")]
 position = Vector2(14072, 543)
 
+[node name="Cactus1" parent="Environment" instance=ExtResource("13_4rkk1")]
+position = Vector2(1909, -97)
+
 [node name="Player" parent="." instance=ExtResource("1_rrpx6")]
 position = Vector2(50, 7)
-
-[node name="Character" parent="." instance=ExtResource("4_hdihm")]
-position = Vector2(199, 31)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." groups=["UI"]]
 
@@ -113,3 +116,7 @@ theme_override_font_sizes/font_size = 30
 text = "\"E\" to interact"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CharacterSpawner" type="Node" parent="."]
+script = ExtResource("14_bpl12")
+Chapters = Array[ExtResource("15_gmpqr")]([ExtResource("16_ep2o1")])

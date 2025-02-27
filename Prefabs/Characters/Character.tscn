@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dr38h8ysriyxr"]
+[gd_scene load_steps=9 format=3 uid="uid://dr38h8ysriyxr"]
 
 [ext_resource type="Script" path="res://Scripts/Character.gd" id="1_772lq"]
 [ext_resource type="Texture2D" uid="uid://b3f4t888hx3l1" path="res://Art/Characters/Adam/AdamHead.png" id="1_unn3q"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://xsntr2ygp8du" path="res://Art/Characters/Adam/AdamBody.png" id="2_ejkyl"]
 [ext_resource type="Resource" uid="uid://dssg6q83uetyo" path="res://Resources/Character/Adam/Adam_TravelItinerary.tres" id="3_pbks6"]
 [ext_resource type="Resource" uid="uid://bisbr1wk21044" path="res://Resources/Character/Adam/Adam_EndDialogue.tres" id="4_12bds"]
+[ext_resource type="Resource" uid="uid://cuu0ogsdxij5o" path="res://Resources/Destinations/Destination_Cactus_1.tres" id="5_odl7f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6mjcy"]
 size = Vector2(22, 34)
@@ -16,6 +17,7 @@ script = ExtResource("1_772lq")
 GreetDialogue = ExtResource("2_4ia3e")
 Travel = ExtResource("3_pbks6")
 EndDialogue = ExtResource("4_12bds")
+StartLocation = ExtResource("5_odl7f")
 
 [node name="Head" type="Sprite2D" parent="."]
 position = Vector2(0, -21.5)
@@ -44,7 +46,7 @@ grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 11
-text = "asdasdasd"
+text = "asdasdasdasd"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2

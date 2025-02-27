@@ -5,6 +5,7 @@ class_name Character
 @export var GreetDialogue : Dialogue
 @export var Travel : TravelItinerary
 @export var EndDialogue : Dialogue
+@export var StartLocation : Destination
 var TargetPosition = Vector2.ZERO
 
 enum VISIBILITY_TYPE {
@@ -14,6 +15,7 @@ enum VISIBILITY_TYPE {
 }
 
 signal CompleteSentence
+signal JobFinished
 
 func SetVisibility(visType = VISIBILITY_TYPE.IN_CAR):
 	match visType:
@@ -24,8 +26,10 @@ func SetVisibility(visType = VISIBILITY_TYPE.IN_CAR):
 		VISIBILITY_TYPE.HIDDEN:
 			GetOutOfCar(Finder.GetPlayer(), TargetPosition)
 			ShowBody(false)
-			
+
+	
 func _ready():
+	global_position = Finder.GetBuilding(StartLocation.InnerName).GetCharacterPosition()
 	$Label.text = ""
 	var characterRadar = load("res://Prefabs/Radar.tscn").instantiate() as Radar
 	Finder.GetUI().add_child(characterRadar)
@@ -91,6 +95,7 @@ func Pickup(playerRef : Player):
 	await EndDialogue.DoDialogue(self)
 	SetVisibility(VISIBILITY_TYPE.HIDDEN)
 	playerRef.SetCanMove(true)
+	JobFinished.emit()
 	queue_free()
 		
 func GetInCar(playerRef):

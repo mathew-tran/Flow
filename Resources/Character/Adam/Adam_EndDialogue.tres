@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Dialogue" load_steps=2 format=3 uid="uid://bisbr1wk21044"]
 
-[ext_resource type="Script" path="res://Resources/Dialogue.gd" id="1_l5u20"]
+[ext_resource type="Script" path="res://Resources/Dialogue.gd" id="1_vekbx"]
 
 [resource]
-script = ExtResource("1_l5u20")
-Text = Array[String](["Thanks for dropping me off.", "See you around maybe?"])
+script = ExtResource("1_vekbx")
+Text = Array[String](["Man. I am nervous!", "Wish me luck!", "Anyways...", "Thanks for dropping me off.", "See you around maybe?"])
 VisiblityType = 1

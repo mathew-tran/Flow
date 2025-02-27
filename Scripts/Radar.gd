@@ -8,6 +8,9 @@ var MinDistance = 100
 
 var bCloseToPosition = false
 
+func _enter_tree():
+	$Sprite.visible = false
+	
 func SetTarget(target):
 	Target = target
 	
@@ -27,6 +30,7 @@ func _input(event):
 	if bCloseToPosition:
 		if event.is_action_pressed("interact"):
 			DoEvent.emit()
+			Finder.GetPlayer().Stop()
 	
 func _exit_tree():
 	Finder.GetInteractText().visible = false

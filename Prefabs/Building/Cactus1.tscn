@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://lu5rbaobhkra"]
+
+[ext_resource type="Texture2D" uid="uid://vfdpayo0tvs" path="res://Art/Buildings/Cactus1/Cactus1.png" id="1_daj4q"]
+[ext_resource type="Script" path="res://Scripts/Building.gd" id="2_wg73n"]
+
+[node name="Cactus1" type="Sprite2D"]
+position = Vector2(0, -32)
+texture = ExtResource("1_daj4q")
+script = ExtResource("2_wg73n")
+BuildingID = 8
+
+[node name="CharacterPoint" type="Node2D" parent="."]
+position = Vector2(0, 32)
