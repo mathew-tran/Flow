@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="CharacterList" load_steps=3 format=3 uid="uid://bm3xmfgu4fm1e"]
+[gd_resource type="Resource" script_class="CharacterList" load_steps=4 format=3 uid="uid://bm3xmfgu4fm1e"]
 
+[ext_resource type="PackedScene" uid="uid://c8gmps00kld60" path="res://Prefabs/Characters/Adam.tscn" id="1_adhqf"]
+[ext_resource type="PackedScene" uid="uid://dojwa23anl7pg" path="res://Prefabs/Characters/Greg.tscn" id="1_krkbb"]
 [ext_resource type="Script" path="res://Resources/CharacterList.gd" id="1_o5koh"]
-[ext_resource type="PackedScene" uid="uid://dr38h8ysriyxr" path="res://Prefabs/Characters/Character.tscn" id="1_okh60"]
 
 [resource]
 script = ExtResource("1_o5koh")
-Characters = Array[PackedScene]([ExtResource("1_okh60"), ExtResource("1_okh60")])
+Characters = Array[PackedScene]([ExtResource("1_krkbb"), ExtResource("1_adhqf")])

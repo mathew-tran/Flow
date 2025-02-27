@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=2 format=3 uid="uid://bj5dhe0irasx8"]
+
+[ext_resource type="Script" path="res://Resources/Dialogue.gd" id="1_fhaia"]
+
+[resource]
+script = ExtResource("1_fhaia")
+Text = Array[String](["Hey!", "I am a tourist here.", "I've some places I wanted to check out."])
+VisiblityType = 0

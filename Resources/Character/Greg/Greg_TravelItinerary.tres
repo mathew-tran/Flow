@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="TravelItinerary" load_steps=13 format=3 uid="uid://b5h0aa82iicfh"]
+
+[ext_resource type="Script" path="res://Resources/TravelDestination.gd" id="1_rluww"]
+[ext_resource type="Resource" uid="uid://8s8dp8byrn41" path="res://Resources/Destinations/Destination_Bar.tres" id="2_7ayes"]
+[ext_resource type="Script" path="res://Resources/Dialogue.gd" id="3_jyul6"]
+[ext_resource type="Resource" uid="uid://cuu0ogsdxij5o" path="res://Resources/Destinations/Destination_Cactus_1.tres" id="4_csyf3"]
+[ext_resource type="Script" path="res://Resources/TravelItinerary.gd" id="5_n6q7h"]
+
+[sub_resource type="Resource" id="Resource_ibec3"]
+script = ExtResource("3_jyul6")
+Text = Array[String](["So..", "I heard there was a place called Moe's bar.", "Can you bring me there?", "I heard it's been in business for almost 70 years!"])
+VisiblityType = 0
+
+[sub_resource type="Resource" id="Resource_w2qm0"]
+script = ExtResource("3_jyul6")
+Text = Array[String](["Wow..", "The owner was really nice and gave me a free plate of wings!", "They were delicious and juicy.", "I left him a nice tip."])
+VisiblityType = 1
+
+[sub_resource type="Resource" id="Resource_q07dn"]
+script = ExtResource("3_jyul6")
+Text = Array[String](["So this is the bar. eh?", "I'll be back in a bit. ", "Just want to go in, look around", "and grab something"])
+VisiblityType = 1
+
+[sub_resource type="Resource" id="Resource_7gftf"]
+script = ExtResource("3_jyul6")
+Text = Array[String]([".......", "..."])
+VisiblityType = 2
+
+[sub_resource type="Resource" id="Resource_ldri1"]
+script = ExtResource("1_rluww")
+Dialogues = SubResource("Resource_ibec3")
+Dest = ExtResource("2_7ayes")
+WaitTime = 2.0
+PrewaitDialogue = SubResource("Resource_q07dn")
+WaitDialogue = SubResource("Resource_7gftf")
+PostWaitDialogue = SubResource("Resource_w2qm0")
+
+[sub_resource type="Resource" id="Resource_hgm8e"]
+script = ExtResource("3_jyul6")
+Text = Array[String](["Where to next?"])
+VisiblityType = 0
+
+[sub_resource type="Resource" id="Resource_a2a83"]
+script = ExtResource("1_rluww")
+Dialogues = SubResource("Resource_hgm8e")
+Dest = ExtResource("4_csyf3")
+WaitTime = 1.0
+
+[resource]
+script = ExtResource("5_n6q7h")
+Destinations = Array[ExtResource("1_rluww")]([SubResource("Resource_ldri1"), SubResource("Resource_a2a83")])
