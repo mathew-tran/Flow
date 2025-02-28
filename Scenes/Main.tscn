@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://cthqcuuesayqa"]
+[gd_scene load_steps=24 format=4 uid="uid://cthqcuuesayqa"]
 
 [ext_resource type="Texture2D" uid="uid://dsn1frtpfccgt" path="res://Art/Background.png" id="1_knvt6"]
 [ext_resource type="PackedScene" uid="uid://byrh4hbjoboyo" path="res://Prefabs/Player.tscn" id="1_rrpx6"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://jcc08m0hb36e" path="res://Prefabs/Building/Toilet7.tscn" id="13_i4ogt"]
 [ext_resource type="Script" path="res://Scripts/CharacterSpawner.gd" id="14_bpl12"]
 [ext_resource type="Script" path="res://Resources/CharacterList.gd" id="15_gmpqr"]
+[ext_resource type="AudioStream" uid="uid://bsaaamg23ax3y" path="res://SFX/Complete.wav" id="15_p4ylr"]
 [ext_resource type="Resource" uid="uid://bm3xmfgu4fm1e" path="res://Resources/CharacterLists/Chapter1.tres" id="16_ep2o1"]
 [ext_resource type="AudioStream" uid="uid://bguvnrufmuqn" path="res://SFX/Beep.wav" id="17_uxe1a"]
 
@@ -106,6 +107,7 @@ position = Vector2(50, 7)
 [node name="CanvasLayer" type="CanvasLayer" parent="." groups=["UI"]]
 
 [node name="MissionText" type="Label" parent="CanvasLayer" groups=["MissionText"]]
+custom_minimum_size = Vector2(600, 0)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -117,12 +119,16 @@ offset_right = 100.0
 offset_bottom = -419.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(300, 23)
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_nh2la")
 text = "...."
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("5_ol2b4")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="CanvasLayer/MissionText"]
+stream = ExtResource("15_p4ylr")
 
 [node name="InteractText" type="Label" parent="CanvasLayer" groups=["InteractText"]]
 anchors_preset = 8

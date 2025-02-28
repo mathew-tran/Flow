@@ -62,7 +62,9 @@ func PlayVoice(letter):
 		$Timer.start()
 		var minPitch = 0.8
 		var maxPitch = 1.2
-		var pitch = lerp(minPitch, maxPitch, float(letter) / float(255))
+		var value = abs(letter.to_upper().unicode_at(0) - "A".unicode_at(0) + 1)
+		print(value)
+		var pitch = lerp(minPitch, maxPitch, float(value) / float(100))
 		print(pitch)
 		$VoiceSFX.pitch_scale = pitch
 		$VoiceSFX.play()
