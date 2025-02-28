@@ -1,16 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://dojwa23anl7pg"]
+[gd_scene load_steps=8 format=3 uid="uid://dojwa23anl7pg"]
 
 [ext_resource type="PackedScene" uid="uid://dr38h8ysriyxr" path="res://Prefabs/Characters/Character.tscn" id="1_d6occ"]
 [ext_resource type="Texture2D" uid="uid://bomybn5c1qtni" path="res://Art/Characters/Greg/GregHead.png" id="2_aql5m"]
 [ext_resource type="Resource" uid="uid://bj5dhe0irasx8" path="res://Resources/Character/Greg/Greg_Greet.tres" id="2_hcwui"]
 [ext_resource type="Texture2D" uid="uid://b2oyooibr825w" path="res://Art/Characters/Greg/GregBody.png" id="3_58ana"]
 [ext_resource type="Resource" uid="uid://b5h0aa82iicfh" path="res://Resources/Character/Greg/Greg_TravelItinerary.tres" id="3_cdbwo"]
+[ext_resource type="AudioStream" uid="uid://bq00uyh8rg5i0" path="res://Music/GregsSong.wav" id="5_2243g"]
 [ext_resource type="Resource" uid="uid://ih1tb36xx0gn" path="res://Resources/Destinations/Destination_Toilet3.tres" id="8_dijor"]
 
 [node name="Character" instance=ExtResource("1_d6occ")]
 GreetDialogue = ExtResource("2_hcwui")
 Travel = ExtResource("3_cdbwo")
 StartLocation = ExtResource("8_dijor")
+CharacterSong = ExtResource("5_2243g")
 
 [node name="Head" parent="." index="0"]
 position = Vector2(0, -19.5)

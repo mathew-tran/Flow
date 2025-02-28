@@ -104,3 +104,13 @@ func _on_position_checker_timeout():
 
 func Stop():
 	linear_velocity = Vector2.ZERO
+
+func SetSong(song):
+	$AudioStreamPlayer2D.stream = song
+	$AudioStreamPlayer2D.play()
+
+func StopSong():
+	$AudioStreamPlayer2D.stop()
+
+func SetVolume(amount):
+	$AudioStreamPlayer2D.volume_db = amount

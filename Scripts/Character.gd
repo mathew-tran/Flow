@@ -7,7 +7,7 @@ class_name Character
 @export var EndDialogue : Dialogue
 @export var StartLocation : Destination
 var TargetPosition = Vector2.ZERO
-
+@export var CharacterSong : AudioStream
 enum VISIBILITY_TYPE {
 	IN_CAR,
 	OUTSIDE,
@@ -27,6 +27,17 @@ func SetVisibility(visType = VISIBILITY_TYPE.IN_CAR):
 			GetOutOfCar(Finder.GetPlayer(), TargetPosition)
 			ShowBody(false)
 
+func _process(delta):
+	var playerRef = Finder.GetPlayer()
+	var minDistance = 100
+	var maxDistance = 10000
+
+	var currentDistance = clamp(playerRef.global_position.distance_to(global_position), minDistance, maxDistance)
+	if currentDistance == 0:
+		return
+	var value = lerp(-4, -80, float(currentDistance) / float(maxDistance))
+	print(value)
+	playerRef.SetVolume(value)
 	
 func _ready():
 	global_position = Finder.GetBuilding(StartLocation.InnerName).GetCharacterPosition()
@@ -36,10 +47,11 @@ func _ready():
 	characterRadar.SetTarget(self)
 	
 	TargetPosition = global_position
+	Finder.GetPlayer().SetSong(CharacterSong)
 	await characterRadar.DoEvent
 	characterRadar.queue_free()	
 	var player = Finder.GetPlayer()
-	player.SetCanMove(false)
+	player.SetCanMove(false)	
 	await Interact()
 	Pickup(player)
 	player.SetCanMove(true)
@@ -50,6 +62,7 @@ func Interact():
 func Pickup(playerRef : Player):
 	var radar = null
 	SetVisibility(VISIBILITY_TYPE.IN_CAR)	
+
 	
 	for travel in Travel.Destinations:
 		await travel.Dialogues.DoDialogue(self)
@@ -96,6 +109,7 @@ func Pickup(playerRef : Player):
 	SetVisibility(VISIBILITY_TYPE.HIDDEN)
 	playerRef.SetCanMove(true)
 	JobFinished.emit()
+	Finder.GetPlayer().StopSong()
 	queue_free()
 		
 func GetInCar(playerRef):

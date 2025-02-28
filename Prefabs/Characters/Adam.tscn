@@ -1,5 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8gmps00kld60"]
+[gd_scene load_steps=3 format=3 uid="uid://c8gmps00kld60"]
 
 [ext_resource type="PackedScene" uid="uid://dr38h8ysriyxr" path="res://Prefabs/Characters/Character.tscn" id="1_3w7au"]
+[ext_resource type="AudioStream" uid="uid://y2tuhkjifm6u" path="res://Music/AdamsSong.wav" id="2_gcn4l"]
 
 [node name="Character" instance=ExtResource("1_3w7au")]
+CharacterSong = ExtResource("2_gcn4l")
