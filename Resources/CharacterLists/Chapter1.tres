@@ -6,4 +6,4 @@
 
 [resource]
 script = ExtResource("1_o5koh")
-Characters = Array[PackedScene]([ExtResource("1_krkbb"), ExtResource("1_adhqf")])
+Characters = Array[PackedScene]([ExtResource("1_adhqf"), ExtResource("1_krkbb")])

@@ -10,7 +10,9 @@ var bCloseToPosition = false
 
 func _enter_tree():
 	$Sprite.visible = false
-	
+
+func _ready():
+	$AnimationPlayer.play("anim")	
 func SetTarget(target):
 	Target = target
 	

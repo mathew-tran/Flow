@@ -8,6 +8,7 @@ class_name Character
 @export var StartLocation : Destination
 var TargetPosition = Vector2.ZERO
 @export var CharacterSong : AudioStream
+@export var CharacterVoice : AudioStream
 enum VISIBILITY_TYPE {
 	IN_CAR,
 	OUTSIDE,
@@ -35,11 +36,11 @@ func _process(delta):
 	var currentDistance = clamp(playerRef.global_position.distance_to(global_position), minDistance, maxDistance)
 	if currentDistance == 0:
 		return
-	var value = lerp(-4, -80, float(currentDistance) / float(maxDistance))
-	print(value)
+	var value = lerp(0, -80, float(currentDistance) / float(maxDistance))
 	playerRef.SetVolume(value)
 	
 func _ready():
+	$VoiceSFX.stream = CharacterVoice
 	global_position = Finder.GetBuilding(StartLocation.InnerName).GetCharacterPosition()
 	$Label.text = ""
 	var characterRadar = load("res://Prefabs/Radar.tscn").instantiate() as Radar
@@ -56,6 +57,16 @@ func _ready():
 	Pickup(player)
 	player.SetCanMove(true)
 
+func PlayVoice(letter):
+	if $Timer.time_left == 0.0:
+		$Timer.start()
+		var minPitch = 0.8
+		var maxPitch = 1.2
+		var pitch = lerp(minPitch, maxPitch, float(letter) / float(255))
+		print(pitch)
+		$VoiceSFX.pitch_scale = pitch
+		$VoiceSFX.play()
+		
 func Interact():
 	await GreetDialogue.DoDialogue(self)
 	
@@ -138,5 +149,6 @@ func Say(words):
 	$Label.visible = true
 	for word in words:
 		$Label.visible_characters += 1
+		PlayVoice(str($Label.text[$Label.visible_characters - 1]))
 		await get_tree().create_timer(.05).timeout
 	CompleteSentence.emit()

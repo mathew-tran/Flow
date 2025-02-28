@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dr38h8ysriyxr"]
+[gd_scene load_steps=10 format=3 uid="uid://dr38h8ysriyxr"]
 
 [ext_resource type="Script" path="res://Scripts/Character.gd" id="1_772lq"]
 [ext_resource type="Texture2D" uid="uid://b3f4t888hx3l1" path="res://Art/Characters/Adam/AdamHead.png" id="1_unn3q"]
@@ -10,6 +10,10 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6mjcy"]
 size = Vector2(22, 34)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5m4mo"]
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Character" type="Area2D"]
 collision_layer = 5
@@ -47,9 +51,17 @@ grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 11
-text = "asdasdasdasd"
+text = "asdd"
+label_settings = SubResource("LabelSettings_5m4mo")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 visible_characters = 0
+visible_characters_behavior = 1
 visible_ratio = 0.0
+
+[node name="VoiceSFX" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
