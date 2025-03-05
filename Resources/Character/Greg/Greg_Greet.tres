@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_fhaia")
-Text = Array[String](["Hey!", "I am a tourist here.", "I've some places I wanted to check out."])
+Text = Array[String](["Hey!", "I am Greg.", "Just a tourist here.", "I've some places I wanted to check out."])
 VisiblityType = 0

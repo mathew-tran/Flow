@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://boos2okjjdugg"]
+
+[ext_resource type="Texture2D" uid="uid://duyfjilsyyuma" path="res://Art/Buildings/KeyBuildingArea.png" id="1_ykk73"]
+[ext_resource type="Script" path="res://Scripts/Building.gd" id="2_sxpln"]
+
+[node name="MoesBar" type="Sprite2D"]
+position = Vector2(0, -32)
+texture = ExtResource("1_ykk73")
+script = ExtResource("2_sxpln")
+BuildingID = 9
+bHideOnGameStart = true
+
+[node name="CharacterPoint" type="Node2D" parent="."]
+position = Vector2(-36, 32)

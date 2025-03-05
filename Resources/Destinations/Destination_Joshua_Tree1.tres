@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Destination" load_steps=2 format=3 uid="uid://bh4l603xn7781"]
+
+[ext_resource type="Script" path="res://Resources/Destination.gd" id="1_k8mfs"]
+
+[resource]
+script = ExtResource("1_k8mfs")
+Name = "Joshua Trees"
+InnerName = 9

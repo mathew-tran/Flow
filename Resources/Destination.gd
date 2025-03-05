@@ -14,6 +14,7 @@ enum PLACE {
 	TOILET_5,
 	TOILET_6,
 	TOILET_7,
-	CACTUS_1
+	CACTUS_1,
+	J_TREE_1
 	
 }

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=2 format=3 uid="uid://cvi0eeud70laj"]
+
+[ext_resource type="Script" path="res://Resources/Dialogue.gd" id="1_qxsw7"]
+
+[resource]
+script = ExtResource("1_qxsw7")
+Text = Array[String](["Later!", "Thanks for your services."])
+VisiblityType = 1

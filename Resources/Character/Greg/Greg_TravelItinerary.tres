@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="TravelItinerary" load_steps=13 format=3 uid="uid://b5h0aa82iicfh"]
+[gd_resource type="Resource" script_class="TravelItinerary" load_steps=19 format=3 uid="uid://b5h0aa82iicfh"]
 
 [ext_resource type="Script" path="res://Resources/TravelDestination.gd" id="1_rluww"]
 [ext_resource type="Resource" uid="uid://8s8dp8byrn41" path="res://Resources/Destinations/Destination_Bar.tres" id="2_7ayes"]
 [ext_resource type="Script" path="res://Resources/Dialogue.gd" id="3_jyul6"]
-[ext_resource type="Resource" uid="uid://cuu0ogsdxij5o" path="res://Resources/Destinations/Destination_Cactus_1.tres" id="4_csyf3"]
+[ext_resource type="Resource" uid="uid://bh4l603xn7781" path="res://Resources/Destinations/Destination_Joshua_Tree1.tres" id="4_ppapp"]
 [ext_resource type="Script" path="res://Resources/TravelItinerary.gd" id="5_n6q7h"]
 
 [sub_resource type="Resource" id="Resource_ibec3"]
@@ -13,7 +13,7 @@ VisiblityType = 0
 
 [sub_resource type="Resource" id="Resource_w2qm0"]
 script = ExtResource("3_jyul6")
-Text = Array[String](["Wow..", "The owner was really nice and gave me a free plate of wings!", "They were delicious and juicy.", "I left him a nice tip."])
+Text = Array[String](["As good as people say it is.", "I might come here again.", "The food was tasty and the atmosphere was pleasant.", "I left him a nice tip."])
 VisiblityType = 1
 
 [sub_resource type="Resource" id="Resource_q07dn"]
@@ -37,15 +37,50 @@ PostWaitDialogue = SubResource("Resource_w2qm0")
 
 [sub_resource type="Resource" id="Resource_hgm8e"]
 script = ExtResource("3_jyul6")
-Text = Array[String](["Where to next?"])
+Text = Array[String](["Next. I'd like to see the joshua trees", "I heard they might be a bit difficult to get to", "Somewhere north of here."])
 VisiblityType = 0
+
+[sub_resource type="Resource" id="Resource_ee60g"]
+script = ExtResource("3_jyul6")
+Text = Array[String](["Thanks for bringing me.", "Mind if you drop me off at Moes again?", "I am getting hungry."])
+VisiblityType = 0
+
+[sub_resource type="Resource" id="Resource_hrh2q"]
+script = ExtResource("3_jyul6")
+Text = Array[String](["So these are the Joshua trees..", "I heard there was an alien sighting around here.", "...", "Have you seen them?", "Let me take some pictures."])
+VisiblityType = 1
+
+[sub_resource type="Resource" id="Resource_igh53"]
+script = ExtResource("3_jyul6")
+Text = Array[String](["...", ".."])
+VisiblityType = 1
 
 [sub_resource type="Resource" id="Resource_a2a83"]
 script = ExtResource("1_rluww")
 Dialogues = SubResource("Resource_hgm8e")
-Dest = ExtResource("4_csyf3")
+Dest = ExtResource("4_ppapp")
+WaitTime = 3.0
+PrewaitDialogue = SubResource("Resource_hrh2q")
+WaitDialogue = SubResource("Resource_igh53")
+PostWaitDialogue = SubResource("Resource_ee60g")
+
+[sub_resource type="Resource" id="Resource_ojc2u"]
+script = ExtResource("3_jyul6")
+Text = Array[String](["Well the was an adventure", "Thanks for entertaining me"])
+VisiblityType = 0
+
+[sub_resource type="Resource" id="Resource_0p8yo"]
+script = ExtResource("3_jyul6")
+Text = Array[String](["Thanks for bringing me around.", "Have a good day."])
+VisiblityType = 0
+
+[sub_resource type="Resource" id="Resource_dppf0"]
+script = ExtResource("1_rluww")
+Dialogues = SubResource("Resource_ojc2u")
+Dest = ExtResource("2_7ayes")
 WaitTime = 1.0
+WaitDialogue = SubResource("Resource_0p8yo")
 
 [resource]
 script = ExtResource("5_n6q7h")
-Destinations = Array[ExtResource("1_rluww")]([SubResource("Resource_ldri1"), SubResource("Resource_a2a83")])
+Destinations = Array[ExtResource("1_rluww")]([SubResource("Resource_ldri1"), SubResource("Resource_a2a83"), SubResource("Resource_dppf0")])
